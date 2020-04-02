@@ -45,7 +45,6 @@ class weatherApp(breezypythongui.EasyFrame):
         self.updateBtn = self.addButton(text="Update",
                                          row=3, column=1,
                                          command=self.update)
-        
 
     # Methods to handle user events.
     def enter(self):
@@ -63,14 +62,12 @@ class weatherApp(breezypythongui.EasyFrame):
         self.updateBtn["state"] = "normal"
         return city_state
 
-    
 
     def update(self):
         """
 
         :return: weather information at the input location
         """
-
 
         def getTemp():
             j = json.loads(getData())
@@ -108,7 +105,6 @@ class weatherApp(breezypythongui.EasyFrame):
             name = getIcon()
             self.image = PhotoImage(file = "%s.gif" % name)
             return self.image
-
         
         self.label2["text"] = getTemp()
         
@@ -118,23 +114,6 @@ class weatherApp(breezypythongui.EasyFrame):
         self.image_label["image"] = getImage()
         self.enterBtn["state"] = "normal"
         self.updateBtn["state"] = "normal"
-        
-
-    
-
-    
-
-    
-
-    
-
-
-
-
-
-    
-
-
 
 
 def main():
@@ -142,7 +121,6 @@ def main():
     Instantiate and pop up the window.
     """
     weatherApp().mainloop()
-
 
 
 if __name__ == "__main__":
