@@ -2,6 +2,7 @@ import breezypythongui
 import urllib.request
 import json
 import datetime
+import time
 from tkinter import PhotoImage
 
 
@@ -109,8 +110,16 @@ class weatherApp(breezypythongui.EasyFrame):
         self.label2["text"] = getTemp()
         
         self.label4["text"] = getDes()
-        today = datetime.datetime.today()
-        self.label5["text"] = "{:%A %B %d %H:%M %Y}".format(today)
+        today = datetime.datetime.utcnow()
+        today = today.time()
+        j = json.loads(getData())
+        time_zone = datetime.time(int(abs(j["timezone"])/3600), 0, 0)
+
+        date = datetime.date(1, 1, 1)
+        current_time = datetime.datetime.combine(date, today)
+        adjust_zone = datetime.datetime.combine(date, time_zone)
+        adjust_time = current_time - adjust_zone
+        self.label5["text"] = "Current time at that location is: " + str(adjust_time)[:-7]
         self.image_label["image"] = getImage()
         self.enterBtn["state"] = "normal"
         self.updateBtn["state"] = "normal"
