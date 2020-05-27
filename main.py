@@ -80,7 +80,8 @@ class weatherApp(breezypythongui.EasyFrame):
         def getUrl():
             city_state = self.label["text"]
             cityState = city_state.split(", ")
-            url = "http://api.openweathermap.org/data/2.5/weather?q=%s,%s,USA&appid=bd8a12003a32ab5f89a6e6ac3bda2d0f&units=imperial" % (cityState[0], cityState[1])
+            url = "http://api.openweathermap.org/data/2.5/weather?q=%s,%s,USA&appid=" \
+                  "00cb32c5121528c23197007112a7e303&units=imperial" % (cityState[0], cityState[1])
             return url
 
         def getData():
